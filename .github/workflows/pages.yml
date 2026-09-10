@@ -1,0 +1,49 @@
+name: pages
+
+# WHY THIS EXISTS
+# The film is a release asset and is never committed, so it can never bloat this repo's
+# history. But GitHub serves release assets as application/octet-stream with
+# Content-Disposition: attachment (measured 2026-09-10), which Safari, iOS and Firefox refuse
+# to play inside a <video>. So this workflow pulls the film out of the latest release at BUILD
+# time and ships it inside the Pages artifact - the site then serves it same-origin as real
+# video/mp4, which every browser plays.
+#
+# LOAD-BEARING: licenses.json lives in the repo root and the GRID28 expert fetches it to
+# verify every live licence. `path: .` publishes the whole root, so that file is included
+# byte-for-byte exactly as before. Do not narrow that path.
+#
+# New cut:   gh release upload film-v1 GRID28.mp4 --clobber
+# Redeploy:  gh workflow run pages.yml     (an asset clobber fires no release event)
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull the film from the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download --pattern 'GRID28.mp4' --dir media --clobber
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
