@@ -1,66 +1,104 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GRID28 &mdash; trading live, wins and losses</title>
-<meta name="description" content="GRID28 running live on a demo account. Every trade, updated automatically. Wins and losses.">
-<link rel="canonical" href="https://djbrightfutures.github.io/grid28/live.html">
-<meta property="og:title" content="GRID28 - trading live, wins and losses">
-<meta property="og:description" content="Every trade the robot takes, published as it happens. Nothing hidden.">
-<meta property="og:url" content="https://djbrightfutures.github.io/grid28/live.html">
+<title>GRID28 live</title>
+<meta name="description" content="GRID28 trading live on gold. Every trade on the chart.">
 <style>
- :root{--ink:#e8ecf2;--dim:#8a93a3;--line:#1d2531;--bg:#0b0e14;--card:#121722;
-       --up:#2ec27e;--dn:#f0553a;--acc:#ffd23f}
- *{box-sizing:border-box}
- body{margin:0;background:var(--bg);color:var(--ink);
-      font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
- .wrap{max-width:760px;margin:0 auto;padding:30px 18px 60px}
- h1{font-size:23px;margin:0 0 6px}
- .sub{color:var(--dim);margin:0 0 20px}
- .warn{background:#171c27;border:1px solid var(--line);border-left:3px solid var(--acc);
-       border-radius:8px;padding:14px 16px;margin:0 0 22px;color:#cfd6e0;font-size:14px}
- .warn b{color:var(--acc)}
- .tot{font-family:ui-monospace,Menlo,monospace;font-size:15px;margin:0 0 20px;color:var(--dim)}
- .book{background:var(--card);border:1px solid var(--line);border-radius:12px;
-       padding:16px 18px;margin-bottom:16px}
- .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
- h2{font-size:17px;margin:0}
- .eq{font-family:ui-monospace,Menlo,monospace;font-size:19px;font-weight:800}
- .eq .d{font-size:13px;font-weight:600}
- .up{color:var(--up)} .dn{color:var(--dn)}
- .meta{color:var(--dim);font-size:13px;margin:6px 0 12px}
- .hist{border-top:1px solid var(--line);padding-top:10px}
- .t{display:flex;gap:10px;align-items:center;padding:5px 0;font-size:13px;
-    border-bottom:1px solid #161c27}
- .tag{font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:4px}
- .tag.win{background:rgba(46,194,126,.16);color:var(--up)}
- .tag.loss{background:rgba(240,85,58,.16);color:var(--dn)}
- .p{font-family:ui-monospace,monospace;font-weight:700;min-width:74px}
- .r{color:var(--dim);flex:1}
- .w{color:#5d6675;font-size:12px}
- .none{color:var(--dim);padding:6px 0}
- footer{margin-top:26px;color:var(--dim);font-size:13px;text-align:center}
- a{color:var(--acc)}
+:root{--bg:#0d1117;--pan:#131a24;--ln:#1e2732;--tx:#e6edf3;--dim:#7d8794;
+      --up:#2ec27e;--dn:#f0553a;--entry:#ffd23f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:14px}
+.top{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.top h1{font-size:17px;margin:0;letter-spacing:.4px}
+.top .live{color:var(--up);font-size:12px}
+.top .when{margin-left:auto;color:var(--dim);font-size:12px}
+.chartbox{background:var(--pan);border:1px solid var(--ln);border-radius:10px;padding:8px}
+canvas{width:100%;height:auto;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+.chip{background:var(--pan);border:1px solid var(--ln);border-radius:8px;
+      padding:8px 12px;display:flex;gap:8px;align-items:baseline}
+.chip b{font-size:13px}.chip span{font:700 14px ui-monospace,Menlo,monospace}
+.chip i{color:var(--dim);font-style:normal;font-size:12px}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.key{color:var(--dim);font-size:12px;margin-top:8px}
+.key s{text-decoration:none;display:inline-block;width:9px;height:9px;border-radius:2px;
+       margin:0 4px 0 12px;vertical-align:middle}
+.key s:first-child{margin-left:0}
+.foot{color:var(--dim);font-size:11.5px;margin-top:14px}
+.foot a{color:var(--dim)}
 </style></head><body><div class=wrap>
-<h1>GRID28, trading live</h1>
-<p class=sub>Every trade the robot takes, published as it happens.</p>
 
-<div class=warn>
-<b>Read this first.</b> This is a <b>demo account trading paper money</b>, not a funded account,
-and it is a <b>small sample</b> &mdash; 6 closed trades so far. A run this short proves
-nothing in either direction, up or down, and it is published while it is <b>down</b> for
-exactly that reason: an EA seller who only shows you a backtest is showing you the part they
-chose. The backtest is on the product page and it is measured honestly; this is what happened
-afterwards, without editing.
-</div>
+<div class=top><h1>GRID28</h1><span class=live>&#9679; live on gold</span>
+<span class=when>as of 13:56, 10 Sep</span></div>
 
-<p class=tot>Combined: -$86.15 across 6 closed trades &middot;
-updated 10 Sep 2026, 12:00</p>
+<div class=chartbox><canvas id=c width=1080 height=460></canvas></div>
 
-<section class=book><div class=head><h2>GRID</h2><div class="eq dn">$988.35 <span class=d>-11.65 (-1.16%)</span></div></div><div class=meta>2 wins &middot; 2 losses &middot; 0 open &middot; GOLD SHORT x3 levels</div><div class=hist><div class=t><span class="tag loss">LOSS</span><span class="p dn">-12.25</span><span class=r>trailing close</span><span class=w>2026-09-10 05:00</span></div><div class=t><span class="tag loss">LOSS</span><span class="p dn">-10.10</span><span class=r>trailing close</span><span class=w>2026-09-09 23:00</span></div><div class=t><span class="tag win">WIN</span><span class="p up">+4.85</span><span class=r>trailing close</span><span class=w>2026-09-09 12:00</span></div><div class=t><span class="tag win">WIN</span><span class="p up">+5.85</span><span class=r>trailing close</span><span class=w>2026-09-08 23:00</span></div></div></section>
-<section class=book><div class=head><h2>GRID+</h2><div class="eq dn">$925.50 <span class=d>-74.50 (-7.45%)</span></div></div><div class=meta>0 wins &middot; 2 losses &middot; 0 open &middot; GOLD SHORT x2 levels</div><div class=hist><div class=t><span class="tag loss">LOSS</span><span class="p dn">-40.60</span><span class=r>trailing close</span><span class=w>2026-09-10 07:00</span></div><div class=t><span class="tag loss">LOSS</span><span class="p dn">-33.90</span><span class=r>trailing close</span><span class=w>2026-09-09 04:00</span></div></div></section>
+<div class=chips><div class=chip><b>GRID</b><span class="dn">$988.35</span><i>2W-2L</i></div><div class=chip><b>GRID+</b><span class="dn">$925.50</span><i>0W-2L</i></div></div>
+<div class=key><s style="background:var(--entry)"></s>entry
+<s style="background:var(--up)"></s>win<s style="background:var(--dn)"></s>loss</div>
 
-<footer>
-<a href="https://djbrightfuture.gumroad.com/l/jzand">GRID28 on Gumroad</a> &mdash; free on a demo account, forever.<br>
-Luxucleen LLC &middot; this page is generated from the live ledger, not written by hand.
-</footer>
+<div class=foot>Demo account, paper money. Every trade it takes is here, wins and losses.
+&middot; <a href="https://djbrightfuture.gumroad.com/l/jzand">GRID28</a></div>
+
+<script>
+var BARS=[[1788264000, 4423.0, 4424.89990234375, 4400.39990234375, 4404.7001953125], [1788267600, 4404.60009765625, 4415.89990234375, 4374.10009765625, 4413.89990234375], [1788271200, 4414.2001953125, 4424.2998046875, 4401.5, 4408.7998046875], [1788274800, 4409.10009765625, 4422.7001953125, 4403.39990234375, 4421.7001953125], [1788278400, 4421.60009765625, 4423.2998046875, 4395.39990234375, 4399.60009765625], [1788282000, 4399.7998046875, 4400.2998046875, 4389.0, 4391.10009765625], [1788285600, 4391.2998046875, 4392.7001953125, 4375.60009765625, 4379.39990234375], [1788289200, 4379.10009765625, 4385.2001953125, 4369.7001953125, 4374.0], [1788292800, 4374.10009765625, 4377.89990234375, 4370.7001953125, 4375.7001953125], [1788300000, 4377.2001953125, 4381.0, 4372.7001953125, 4375.7001953125], [1788303600, 4375.7001953125, 4382.0, 4367.7001953125, 4370.60009765625], [1788307200, 4370.7001953125, 4380.89990234375, 4360.7001953125, 4362.5], [1788310800, 4362.10009765625, 4373.5, 4333.89990234375, 4338.10009765625], [1788314400, 4337.7998046875, 4362.10009765625, 4334.60009765625, 4350.0], [1788318000, 4350.0, 4351.39990234375, 4329.2001953125, 4348.7998046875], [1788321600, 4349.89990234375, 4354.39990234375, 4347.7998046875, 4353.7001953125], [1788325200, 4353.89990234375, 4373.10009765625, 4350.0, 4366.7001953125], [1788328800, 4366.7998046875, 4375.89990234375, 4361.2001953125, 4368.2998046875], [1788332400, 4368.39990234375, 4377.7998046875, 4365.7998046875, 4369.7998046875], [1788336000, 4370.10009765625, 4378.39990234375, 4359.10009765625, 4359.60009765625], [1788339600, 4359.60009765625, 4369.2001953125, 4352.2998046875, 4355.89990234375], [1788343200, 4355.89990234375, 4359.7998046875, 4349.10009765625, 4356.60009765625], [1788346800, 4356.2998046875, 4380.2001953125, 4354.89990234375, 4379.60009765625], [1788350400, 4379.5, 4391.39990234375, 4374.39990234375, 4378.2998046875], [1788354000, 4378.2998046875, 4433.5, 4377.5, 4433.0], [1788357600, 4432.89990234375, 4444.39990234375, 4421.39990234375, 4424.2001953125], [1788361200, 4424.10009765625, 4427.7998046875, 4411.39990234375, 4419.89990234375], [1788364800, 4419.7001953125, 4421.7001953125, 4411.10009765625, 4415.10009765625], [1788368400, 4415.2001953125, 4427.39990234375, 4411.2001953125, 4423.39990234375], [1788372000, 4423.7001953125, 4426.2998046875, 4415.89990234375, 4420.2998046875], [1788375600, 4420.7998046875, 4437.89990234375, 4418.2998046875, 4437.7001953125], [1788379200, 4437.39990234375, 4438.2001953125, 4430.60009765625, 4434.2998046875], [1788386400, 4436.39990234375, 4438.10009765625, 4428.39990234375, 4429.7998046875], [1788390000, 4430.2001953125, 4434.39990234375, 4426.7001953125, 4431.0], [1788393600, 4431.2001953125, 4442.89990234375, 4427.7998046875, 4440.5], [1788397200, 4440.7998046875, 4457.60009765625, 4432.2001953125, 4455.0], [1788400800, 4455.2001953125, 4466.2001953125, 4452.2001953125, 4466.0], [1788404400, 4466.0, 4478.2001953125, 4464.89990234375, 4477.10009765625], [1788408000, 4477.2998046875, 4483.89990234375, 4470.7998046875, 4483.0], [1788411600, 4483.10009765625, 4486.0, 4468.2001953125, 4477.0], [1788415200, 4477.0, 4482.2001953125, 4462.7998046875, 4466.39990234375], [1788418800, 4466.0, 4477.5, 4464.60009765625, 4474.7001953125], [1788422400, 4474.5, 4490.0, 4473.60009765625, 4481.10009765625], [1788426000, 4481.2998046875, 4488.2001953125, 4472.0, 4473.89990234375], [1788429600, 4474.10009765625, 4476.10009765625, 4464.89990234375, 4473.2001953125], [1788433200, 4473.10009765625, 4493.39990234375, 4471.10009765625, 4490.2001953125], [1788436800, 4490.0, 4542.60009765625, 4484.10009765625, 4540.89990234375], [1788440400, 4540.89990234375, 4543.7001953125, 4502.7998046875, 4517.10009765625], [1788444000, 4517.10009765625, 4531.89990234375, 4502.89990234375, 4531.89990234375], [1788447600, 4532.0, 4558.5, 4530.89990234375, 4540.7998046875], [1788451200, 4540.7001953125, 4543.39990234375, 4533.0, 4533.7001953125], [1788454800, 4533.89990234375, 4542.0, 4530.60009765625, 4535.7001953125], [1788458400, 4534.60009765625, 4537.10009765625, 4521.2001953125, 4522.89990234375], [1788462000, 4522.7998046875, 4528.7001953125, 4520.2998046875, 4522.89990234375], [1788465600, 4522.7001953125, 4523.2998046875, 4517.7001953125, 4520.0], [1788469200, 4520.2998046875, 4520.2998046875, 4520.2998046875, 4520.2998046875], [1788472800, 4522.0, 4526.2998046875, 4518.5, 4521.60009765625], [1788476400, 4521.5, 4527.2001953125, 4519.0, 4526.89990234375], [1788480000, 4527.0, 4533.5, 4519.2998046875, 4532.89990234375], [1788483600, 4532.60009765625, 4533.60009765625, 4513.0, 4525.2001953125], [1788487200, 4525.2998046875, 4528.89990234375, 4516.2998046875, 4523.7998046875], [1788490800, 4523.5, 4525.0, 4513.60009765625, 4513.7998046875], [1788494400, 4513.10009765625, 4521.5, 4511.60009765625, 4520.39990234375], [1788498000, 4520.2998046875, 4523.89990234375, 4512.7998046875, 4518.2001953125], [1788501600, 4518.10009765625, 4519.5, 4506.60009765625, 4509.5], [1788505200, 4509.2998046875, 4537.7998046875, 4508.0, 4530.2998046875], [1788508800, 4530.39990234375, 4533.60009765625, 4521.0, 4524.2998046875], [1788512400, 4524.5, 4525.7001953125, 4510.0, 4511.7998046875], [1788516000, 4511.7001953125, 4523.10009765625, 4511.60009765625, 4518.89990234375], [1788519600, 4519.2001953125, 4519.2998046875, 4510.89990234375, 4513.10009765625], [1788523200, 4513.2998046875, 4523.5, 4419.0, 4440.60009765625], [1788526800, 4440.89990234375, 4481.7998046875, 4412.0, 4459.89990234375], [1788530400, 4460.0, 4489.39990234375, 4458.7998046875, 4474.2998046875], [1788534000, 4474.39990234375, 4496.2001953125, 4469.5, 4483.2998046875], [1788537600, 4483.7998046875, 4491.0, 4479.5, 4483.60009765625], [1788541200, 4483.5, 4488.0, 4461.10009765625, 4464.0], [1788544800, 4464.7001953125, 4474.5, 4459.0, 4471.2998046875], [1788548400, 4471.60009765625, 4485.60009765625, 4470.0, 4482.0], [1788552000, 4481.7998046875, 4482.2998046875, 4475.60009765625, 4476.60009765625], [1788840000, 4483.5, 4488.7998046875, 4477.0, 4481.60009765625], [1788843600, 4481.7001953125, 4483.39990234375, 4462.10009765625, 4464.39990234375], [1788847200, 4464.39990234375, 4465.10009765625, 4442.60009765625, 4448.2998046875], [1788850800, 4448.60009765625, 4454.0, 4434.2998046875, 4436.7001953125], [1788854400, 4436.60009765625, 4443.0, 4432.0, 4438.5], [1788858000, 4438.0, 4450.10009765625, 4435.0, 4447.2001953125], [1788861600, 4447.2998046875, 4451.60009765625, 4438.0, 4439.89990234375], [1788865200, 4440.2001953125, 4452.39990234375, 4435.5, 4450.89990234375], [1788868800, 4450.89990234375, 4456.2998046875, 4429.5, 4456.10009765625], [1788872400, 4456.2998046875, 4457.89990234375, 4434.7001953125, 4440.2998046875], [1788876000, 4440.2998046875, 4449.0, 4433.7001953125, 4443.39990234375], [1788879600, 4443.7998046875, 4454.5, 4439.7998046875, 4439.7998046875], [1788883200, 4440.0, 4443.39990234375, 4425.10009765625, 4438.2998046875], [1788886800, 4438.39990234375, 4448.60009765625, 4429.5, 4434.2998046875], [1788890400, 4434.5, 4434.7001953125, 4402.39990234375, 4420.10009765625], [1788894000, 4420.2001953125, 4421.7998046875, 4401.10009765625, 4404.5], [1788897600, 4404.10009765625, 4409.5, 4381.0, 4400.0], [1788904800, 4399.0, 4403.0, 4393.7001953125, 4397.39990234375], [1788908400, 4397.39990234375, 4403.39990234375, 4392.39990234375, 4393.10009765625], [1788912000, 4393.2998046875, 4409.5, 4384.10009765625, 4408.7998046875], [1788915600, 4408.60009765625, 4422.0, 4397.7998046875, 4417.7001953125], [1788919200, 4417.2998046875, 4428.39990234375, 4411.0, 4426.0], [1788922800, 4426.2001953125, 4426.60009765625, 4419.2001953125, 4420.39990234375], [1788926400, 4418.7001953125, 4426.2001953125, 4414.2001953125, 4425.2998046875], [1788930000, 4425.39990234375, 4444.60009765625, 4423.89990234375, 4442.2998046875], [1788933600, 4442.39990234375, 4449.89990234375, 4438.60009765625, 4444.7001953125], [1788937200, 4444.39990234375, 4456.2998046875, 4443.0, 4452.89990234375], [1788940800, 4452.7998046875, 4455.39990234375, 4442.60009765625, 4444.60009765625], [1788944400, 4444.7998046875, 4446.2998046875, 4432.5, 4434.60009765625], [1788948000, 4434.5, 4447.0, 4430.0, 4442.89990234375], [1788951600, 4443.2998046875, 4459.89990234375, 4443.2001953125, 4451.60009765625], [1788955200, 4451.5, 4453.60009765625, 4435.2001953125, 4444.39990234375], [1788958800, 4444.2001953125, 4479.0, 4442.7998046875, 4459.2998046875], [1788962400, 4459.2001953125, 4473.0, 4453.60009765625, 4463.2001953125], [1788966000, 4463.39990234375, 4477.0, 4419.2998046875, 4442.7001953125], [1788969600, 4442.89990234375, 4455.39990234375, 4435.7998046875, 4454.39990234375], [1788973200, 4454.5, 4465.60009765625, 4453.7998046875, 4461.2001953125], [1788976800, 4461.39990234375, 4466.7001953125, 4446.5, 4448.2001953125], [1788980400, 4448.2001953125, 4450.39990234375, 4441.10009765625, 4444.39990234375], [1788984000, 4444.2001953125, 4448.10009765625, 4438.89990234375, 4447.2001953125], [1788991200, 4448.0, 4450.39990234375, 4442.0, 4443.89990234375], [1788994800, 4444.0, 4447.5, 4436.7001953125, 4437.5], [1788998400, 4437.7001953125, 4448.39990234375, 4433.2001953125, 4444.5], [1789002000, 4444.2998046875, 4462.5, 4443.5, 4455.2001953125], [1789005600, 4455.2001953125, 4464.39990234375, 4451.2998046875, 4462.7001953125], [1789009200, 4462.7001953125, 4464.5, 4449.89990234375, 4451.89990234375], [1789012800, 4452.39990234375, 4458.39990234375, 4448.39990234375, 4451.39990234375], [1789016400, 4451.2001953125, 4475.10009765625, 4451.10009765625, 4475.0], [1789020000, 4475.10009765625, 4479.89990234375, 4454.39990234375, 4469.2998046875], [1789023600, 4469.0, 4469.5, 4447.5, 4454.89990234375], [1789027200, 4454.7001953125, 4455.7001953125, 4435.0, 4437.7998046875], [1789030800, 4437.7998046875, 4439.5, 4431.0, 4437.0], [1789034400, 4436.89990234375, 4442.7998046875, 4417.0, 4421.39990234375], [1789038000, 4421.10009765625, 4433.10009765625, 4415.10009765625, 4416.7001953125], [1789041600, 4416.7998046875, 4419.89990234375, 4365.39990234375, 4381.7998046875], [1789045200, 4382.10009765625, 4418.10009765625, 4380.39990234375, 4408.5], [1789048800, 4408.2998046875, 4419.10009765625, 4396.39990234375, 4400.10009765625], [1789052400, 4400.39990234375, 4414.10009765625, 4394.60009765625, 4407.7998046875], [1789056000, 4408.10009765625, 4412.0, 4395.5, 4406.39990234375], [1789059600, 4406.2001953125, 4410.5, 4397.10009765625, 4399.2001953125], [1789062410, 4399.2001953125, 4399.2001953125, 4399.2001953125, 4399.2001953125]], MARKS=[{"book": "GRID", "t": "2026-09-10 05:00:00", "opened": "", "entry": null, "exit": null, "side": "LONG", "pnl": -12.25, "levels": 1}, {"book": "GRID", "t": "2026-09-09 23:00:00", "opened": "", "entry": null, "exit": null, "side": "SHORT", "pnl": -10.1, "levels": 1}, {"book": "GRID", "t": "2026-09-09 12:00:00", "opened": "", "entry": null, "exit": null, "side": "LONG", "pnl": 4.85, "levels": 2}, {"book": "GRID", "t": "2026-09-08 23:00:00", "opened": "", "entry": null, "exit": null, "side": "SHORT", "pnl": 5.85, "levels": 1}, {"book": "GRID+", "t": "2026-09-10 07:00:00", "opened": "", "entry": null, "exit": null, "side": "LONG", "pnl": -40.6, "levels": 2}, {"book": "GRID+", "t": "2026-09-09 04:00:00", "opened": "", "entry": null, "exit": null, "side": "SHORT", "pnl": -33.9, "levels": 2}];
+function draw(){
+ var c=document.getElementById('c'), x=c.getContext('2d');
+ var W=c.width, H=c.height, PR=64, PB=20, PT=10, PL=6;
+ x.clearRect(0,0,W,H);
+ if(!BARS.length){x.fillStyle='#7d8794';x.font='14px sans-serif';
+   x.fillText('the price feed did not answer when this page was built',20,40);return;}
+ var lo=1e9, hi=-1e9;
+ BARS.forEach(function(b){ if(b[3]<lo)lo=b[3]; if(b[2]>hi)hi=b[2]; });
+ MARKS.forEach(function(m){ [m.entry,m.exit].forEach(function(v){
+   if(v){ if(v<lo)lo=v; if(v>hi)hi=v; } }); });
+ var pad=(hi-lo)*0.06||1; lo-=pad; hi+=pad;
+ var cw=(W-PL-PR)/BARS.length;
+ function X(i){ return PL+i*cw+cw/2; }
+ function Y(p){ return PT+(hi-p)/(hi-lo)*(H-PT-PB); }
+
+ // price grid
+ x.strokeStyle='#1e2732'; x.fillStyle='#7d8794'; x.font='11px ui-monospace,monospace';
+ x.lineWidth=1;
+ for(var k=0;k<=4;k++){ var p=lo+(hi-lo)*k/4, y=Math.round(Y(p))+0.5;
+   x.beginPath(); x.moveTo(PL,y); x.lineTo(W-PR,y); x.stroke();
+   x.fillText(p.toFixed(2), W-PR+7, y+4); }
+
+ // candles
+ BARS.forEach(function(b,i){
+   var o=b[1],h=b[2],l=b[3],cl=b[4], up=cl>=o;
+   x.strokeStyle=up?'#2ec27e':'#f0553a'; x.fillStyle=up?'#2ec27e':'#f0553a';
+   var xc=Math.round(X(i))+0.5;
+   x.beginPath(); x.moveTo(xc,Y(h)); x.lineTo(xc,Y(l)); x.stroke();
+   var bw=Math.max(1,cw*0.62), y1=Y(Math.max(o,cl)), y2=Y(Math.min(o,cl));
+   x.fillRect(xc-bw/2, y1, bw, Math.max(1,y2-y1));
+ });
+
+ // his trades
+ function at(ts){ var t=Date.parse(ts.replace(' ','T'))/1000; if(!t) return -1;
+   var best=-1, d=1e18;
+   BARS.forEach(function(b,i){ var dd=Math.abs(b[0]-t); if(dd<d){d=dd;best=i;} });
+   return best; }
+ MARKS.forEach(function(m){
+   var i=at(m.t); if(i<0) return;
+   var win=m.pnl>=0, col=win?'#2ec27e':'#f0553a';
+   if(m.entry){
+     var j=m.opened?at(m.opened):Math.max(0,i-6);
+     x.strokeStyle='#ffd23f'; x.setLineDash([5,4]); x.lineWidth=1.4;
+     x.beginPath(); x.moveTo(X(j<0?Math.max(0,i-6):j),Y(m.entry)); x.lineTo(X(i),Y(m.entry));
+     x.stroke(); x.setLineDash([]);
+   }
+   var py=m.exit?Y(m.exit):Y(BARS[i][4]);
+   x.fillStyle=col; x.beginPath(); x.arc(X(i),py,4.5,0,6.284); x.fill();
+   x.font='700 11px ui-monospace,monospace';
+   x.fillText((m.pnl>=0?'+':'')+m.pnl.toFixed(2), X(i)+8, py-6);
+ });
+}
+function fit(){ var c=document.getElementById('c');
+  var w=Math.max(320,Math.min(1080,c.parentNode.clientWidth-16));
+  c.width=w; c.height=Math.round(Math.min(460,Math.max(260,w*0.46))); draw(); }
+addEventListener('resize',fit); fit();
+</script>
 </div></body></html>
