@@ -41,7 +41,11 @@ jobs:
       - name: Pull the film from the latest release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release download --pattern 'GRID28.mp4' --dir media --clobber
+        run: |
+          gh release download --pattern 'GRID28.mp4' --dir media --clobber
+          touch .nojekyll
+          echo '--- what is actually in media ---'
+          ls -la media
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
