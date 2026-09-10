@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRID28 &mdash; trading live, wins and losses</title>
+<meta name="description" content="GRID28 running live on a demo account. Every trade, updated automatically. Wins and losses.">
+<link rel="canonical" href="https://djbrightfutures.github.io/grid28/live.html">
+<meta property="og:title" content="GRID28 - trading live, wins and losses">
+<meta property="og:description" content="Every trade the robot takes, published as it happens. Nothing hidden.">
+<meta property="og:url" content="https://djbrightfutures.github.io/grid28/live.html">
+<style>
+ :root{--ink:#e8ecf2;--dim:#8a93a3;--line:#1d2531;--bg:#0b0e14;--card:#121722;
+       --up:#2ec27e;--dn:#f0553a;--acc:#ffd23f}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);
+      font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+ .wrap{max-width:760px;margin:0 auto;padding:30px 18px 60px}
+ h1{font-size:23px;margin:0 0 6px}
+ .sub{color:var(--dim);margin:0 0 20px}
+ .warn{background:#171c27;border:1px solid var(--line);border-left:3px solid var(--acc);
+       border-radius:8px;padding:14px 16px;margin:0 0 22px;color:#cfd6e0;font-size:14px}
+ .warn b{color:var(--acc)}
+ .tot{font-family:ui-monospace,Menlo,monospace;font-size:15px;margin:0 0 20px;color:var(--dim)}
+ .book{background:var(--card);border:1px solid var(--line);border-radius:12px;
+       padding:16px 18px;margin-bottom:16px}
+ .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+ h2{font-size:17px;margin:0}
+ .eq{font-family:ui-monospace,Menlo,monospace;font-size:19px;font-weight:800}
+ .eq .d{font-size:13px;font-weight:600}
+ .up{color:var(--up)} .dn{color:var(--dn)}
+ .meta{color:var(--dim);font-size:13px;margin:6px 0 12px}
+ .hist{border-top:1px solid var(--line);padding-top:10px}
+ .t{display:flex;gap:10px;align-items:center;padding:5px 0;font-size:13px;
+    border-bottom:1px solid #161c27}
+ .tag{font-size:10.5px;font-weight:800;padding:2px 6px;border-radius:4px}
+ .tag.win{background:rgba(46,194,126,.16);color:var(--up)}
+ .tag.loss{background:rgba(240,85,58,.16);color:var(--dn)}
+ .p{font-family:ui-monospace,monospace;font-weight:700;min-width:74px}
+ .r{color:var(--dim);flex:1}
+ .w{color:#5d6675;font-size:12px}
+ .none{color:var(--dim);padding:6px 0}
+ footer{margin-top:26px;color:var(--dim);font-size:13px;text-align:center}
+ a{color:var(--acc)}
+</style></head><body><div class=wrap>
+<h1>GRID28, trading live</h1>
+<p class=sub>Every trade the robot takes, published as it happens.</p>
+
+<div class=warn>
+<b>Read this first.</b> This is a <b>demo account trading paper money</b>, not a funded account,
+and it is a <b>small sample</b> &mdash; 6 closed trades so far. A run this short proves
+nothing in either direction, up or down, and it is published while it is <b>down</b> for
+exactly that reason: an EA seller who only shows you a backtest is showing you the part they
+chose. The backtest is on the product page and it is measured honestly; this is what happened
+afterwards, without editing.
+</div>
+
+<p class=tot>Combined: -$86.15 across 6 closed trades &middot;
+updated 10 Sep 2026, 11:18</p>
+
+<section class=book><div class=head><h2>GRID</h2><div class="eq dn">$988.35 <span class=d>-11.65 (-1.16%)</span></div></div><div class=meta>2 wins &middot; 2 losses &middot; 0 open &middot; GOLD SHORT x3 levels</div><div class=hist><div class=t><span class="tag loss">LOSS</span><span class="p dn">-12.25</span><span class=r>trailing close</span><span class=w>2026-09-10 05:00</span></div><div class=t><span class="tag loss">LOSS</span><span class="p dn">-10.10</span><span class=r>trailing close</span><span class=w>2026-09-09 23:00</span></div><div class=t><span class="tag win">WIN</span><span class="p up">+4.85</span><span class=r>trailing close</span><span class=w>2026-09-09 12:00</span></div><div class=t><span class="tag win">WIN</span><span class="p up">+5.85</span><span class=r>trailing close</span><span class=w>2026-09-08 23:00</span></div></div></section>
+<section class=book><div class=head><h2>GRID+</h2><div class="eq dn">$925.50 <span class=d>-74.50 (-7.45%)</span></div></div><div class=meta>0 wins &middot; 2 losses &middot; 0 open &middot; GOLD SHORT x2 levels</div><div class=hist><div class=t><span class="tag loss">LOSS</span><span class="p dn">-40.60</span><span class=r>trailing close</span><span class=w>2026-09-10 07:00</span></div><div class=t><span class="tag loss">LOSS</span><span class="p dn">-33.90</span><span class=r>trailing close</span><span class=w>2026-09-09 04:00</span></div></div></section>
+
+<footer>
+<a href="https://djbrightfuture.gumroad.com/l/jzand">GRID28 on Gumroad</a> &mdash; free on a demo account, forever.<br>
+Luxucleen LLC &middot; this page is generated from the live ledger, not written by hand.
+</footer>
+</div></body></html>
